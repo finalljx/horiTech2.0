@@ -1,4 +1,4 @@
-var cherry = new Object();
+﻿var cherry = new Object();
 (function($){
 /*
 @author:lvjx
@@ -837,12 +837,12 @@ var horiPub={
 	}
 }
 //rend hori
-$(document).ready(function(){
+//$(document).ready(function(){
 	$(window.document).trigger("horiInit",[opts]);
 	var hori=$.extend({},horiPub,opts);
 	jQuery.extend({hori:hori})
 	// $(window.document).trigger("horidone",[hori]);
-	}	
-)	
+//	}	
+//)	
 
 })(jQuery)
