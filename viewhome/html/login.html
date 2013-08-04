@@ -28,7 +28,9 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 
-							localStorage.setItem("itcode",encrypt($.hori.getconfig().encryptKey,"zhangsan"));
+					//测试用临时写入到localStorage
+					localStorage.setItem("itcode",encrypt($.hori.getconfig().encryptKey,"zhangsan"));
+					localStorage.setItem("oaServerName",$.hori.getconfig().oaServerName);
 
 				if($.cookie("data-saveusername")=="true"){
 
