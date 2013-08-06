@@ -24,61 +24,29 @@
 	<script src="../lib/jquery-mobile/jquery.mobile.min.js"></script>
 </head>
 <body>
-	<!--div id="list" data-role="page" class="type-home">
+	<div id="list" data-role="page" class="type-home">
 		<div data-role="content" align="center">
-			<ul data-role="listview" data-inset="true" data-bind="foreach:taskCords">
-				<a data-bind="attr: {"href": $data.url}"><li data-bind="text: $data.title"></li></a>
-				
-			</ul>
-			<br/>
-			<br/>
-			<br/>
-		</div><!-- /content -->
-	</div -->
-
-<p> firstName:<input data-bind="value : firstName"></input></p>
-		<p> secondName:<input data-bind="value : secondName"></input></p>
-		<div data-bind="attr: {title:title}"><input data-bind="value: fullName"></input></div>
-
-		<ul data-bind="foreach: planets">
-			<li>
-
-				<div> planet <h data-bind="text: name"></h></div>
-				<p data-bind="text: $parent.firstName"></p>
-				<div data-bind="if: capital">capital:<h data-bind="text: capital.name"></h></div>
-			</li>
-		</ul>
-	</body>
-	<script>
-		var viewModel=function(first,second){
-
-		var self=this;
-		this.firstName=ko.observable(first);
-		this.secondName=ko.observable(second);
-		this.fullName=ko.computed({
-			read: function(){
-				return this.firstName()+"--"+this.secondName();
-			},
-			write: function(value){
-
-				
-				var lastpost=value.indexOf(" ");
-				if(lastpost > 0){
-					self.firstName(value.substring(0,lastpost));
-					self.secondName(value.substring(lastpost + 1,value.length));
-				}
-				
-			},
-			owner:this
-			});
-		this.title="iam ko title";
-		this.planets=ko.observableArray([{name:"earth",capital:null},{name:"moon",capital:{name:"moonCapital"}}]);
+					<p> firstName:<input data-bind="value : firstName">  </input></p>
+					<p> secondName:<input data-bind="value : secondName">  </input></p>
+					
 		
-	}
-		$(document).ready(function(){
+					<ul data-bind="foreach: planets">
+						<li>
+			
+							<div> planet <h data-bind="text: name"></h></div>
+							<p data-bind="text: $parent.firstName"></p>
+							<div data-bind="if: capital">capital:<h data-bind="text: capital.name"></h></div>
+						</li>
+					</ul>
+			</div>
+			<div data-role="footer" data-position="fixed">
+        <h4>by Christoph Burgdorf</h4>
+    </div>
+	</div>
+	
+	  
+	</body>
+	
 
-			//ko.applyBindings(new viewModel("lisi","wangwu"));
-		})
-	</script>
 </html>
 
