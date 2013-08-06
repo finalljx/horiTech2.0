@@ -26,16 +26,14 @@
 <body>
 	<div id="list" data-role="page" class="type-home">
 		<div data-role="content" align="center">
-					<p> firstName:<input data-bind="value : firstName">  </input></p>
-					<p> secondName:<input data-bind="value : secondName">  </input></p>
 					
 		
-					<ul data-bind="foreach: planets">
+					<ul data-bind="foreach: planets" data-role="listview" data-inset="true">
 						<li>
 			
-							<div> planet <h data-bind="text: name"></h></div>
-							<p data-bind="text: $parent.firstName"></p>
-							<div data-bind="if: capital">capital:<h data-bind="text: capital.name"></h></div>
+						<a data-bind="attr: {'href':href}" data-icon="arrow-r" data-iconpos="right"> <h3 data-bind="text: title"></h3>
+							<p>时间：<font color="#0080ff"><span data-bind="text: date"></span></font>状态：<font color="#0080ff"><span data-bind="text: taskState"></span></font></p>
+						</a>
 						</li>
 					</ul>
 			</div>

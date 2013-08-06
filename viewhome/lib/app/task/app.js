@@ -16,13 +16,17 @@ var vw=ko.observableArray([{"title":"sss","url":"http://www.baidu.com"}]);
 app.render=function(jsonData){
 	var viewModel=app.viewModel(jsonData);
 	//ko.applyBingds(vw);
-			ko.applyBindings(new viewModel("lisi","wangwu"));
+			ko.applyBindings(viewModel);
 }
 $(document).ready(function(){
 
 	var config=$.hori.getconfig();
 	var itcode=localStorage.getItem("itcode");
-	itcode=decrypt(config.encryptKey,itcode);
+	if(itcode!=null){
+
+		alert(itcode)
+		itcode=decrypt(config.encryptKey,itcode);
+	}
 	var oaServerName=localStorage.getItem("oaServerName");
 	var serverUrl=localStorage.getItem("appServerUrl");
 	var dataSource=
