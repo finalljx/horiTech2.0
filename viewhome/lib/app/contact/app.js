@@ -5,7 +5,7 @@ app.getData=function(args){
 	//调用ajax 获取远程数据
 	$.ajax({
 		//url 正常是args.dataSource 测试临时改为取当前目录的json数据
-		url:"../lib/app/task/server.json",
+		url:"../lib/app/contact/contact.json",
 		success:function(res){
 			app.render(res);
 		},
