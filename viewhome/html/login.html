@@ -180,17 +180,26 @@
 						"url":"http://115.28.33.62/view/oa/loginvalidate/names.nsf?Login",
 						"data":data,
 						"success":function(res){
-						alert(res);
-							var targetURL= "viewhome/html/home.html"
+								alert(res);
 
-							targetURL=encodeURI(targetURL);
-							var componentURL = "viewhome/xml/digihome.xml";
+								var json = JSON.parse(res);
+								if(json.success){
+									alert($.hori.getconfig().oaServerName)
+									//本地存储itcode 和oaServerName
+									localStorage.setItem("oaServerName",$.hori.getconfig().oaServerName)
+									//localStorage.setItem("itcode",encrypt($.hori.getconfig().encryptKey,username));
+									var targetURL= "viewhome/html/home.html"
+									targetURL=encodeURI(targetURL);
+									var componentURL = "viewhome/xml/digihome.xml";
+									$.hori.loadPage(targetURL, componentURL);
 
-							
-							$.hori.loadPage(targetURL, componentURL);
+								}else{
+									$.hori.hideLoading();
+									alert("登录失败,用户名或密码错.");
+								}
 
 						}
-						})
+					})
 			}
 
 			function showDeviceId(){
