@@ -175,10 +175,10 @@
 					}
 				});
 				*/
-				$.hori.invokeClientRequest({
+				invokeClientRequest({
 						"type":"post",
 						"url":"http://115.28.33.62/view/oa/loginvalidate/names.nsf?Login",
-						"data":"userName=aa&password=bb",
+						"data":data,
 						"success":function(res){
 						alert(res);
 							var targetURL= "viewhome/html/home.html"
