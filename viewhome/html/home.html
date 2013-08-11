@@ -71,11 +71,11 @@ error:function(response){
 
 
 function inittodos(){
-	// var icount=0;
+	var icount=0;
 	if (icount!=gcount){
 		/*
-		var url = "/view/oa/todosnum/Produce/GeneralMessage.nsf/GetAllMsgInfoAgent?openagent&random="+Math.random();
-		$.ajax({
+		   var url = "/view/oa/todosnum/Produce/GeneralMessage.nsf/GetAllMsgInfoAgent?openagent&random="+Math.random();
+		   $.ajax({
 type: "POST", url: url, data:'data-xml=yes^~^app|8|vwTaskUnDoneForMobile|vwTaskUnDoneForMobile^~^msg|5|msgByDateDownUnRdView|msgByDateDownRdView^~^flowinfo|5|FlowUndoView|FlowDoneView', dataType: "text", cache:false,
 success: function(response){
 $("#spanTodo").html(response);
@@ -86,18 +86,21 @@ alert("错误:"+response.responseText);
 });
 icount= gcount;
 }
-*/
-		var url = "/view/oa/todosnum/Produce/GeneralMessage.nsf/GetAllMsgInfoAgent?openagent&random="+Math.random();
-$.hori.invokeClientRequest({
-		"type":"post",
-		"url":url,
-		"data":"",
-		"success":function(res){
+		 */
+	var url = "/view/oa/todosnum/Produce/GeneralMessage.nsf/GetAllMsgInfoAgent?openagent&random="+Math.random();
+	$.hori.invokeClientRequest({
+			"type":"post",
+			"url":url,
+			"data":"data-xml=yes^~^app|8|vwTaskUnDoneForMobile|vwTaskUnDoneForMobile^~^msg|5|msgByDateDownUnRdView|msgByDateDownRdView^~^flowinfo|5|FlowUndoView|FlowDoneView",
+			"success":function(res){
 
-			
-		$("#spanTodo").html(res);
-		}
-		})
+
+			$("#spanTodo").html(res);
+
+			icount= gcount;
+			}
+			})
+}
 }
 /*
    调整气泡位置
@@ -168,7 +171,7 @@ function loadTaskList(){
 	$.hori.showLoading();
 	var targetUrl="./task.html"
 
-	$.hori.loadPage(encodeURI(targetUrl));
+		$.hori.loadPage(encodeURI(targetUrl));
 
 }
 function loadContact(){
@@ -183,7 +186,7 @@ function loadContact(){
 	</head>
 	<body>
 
-		<div data-role="page" id="home" style="background:url(/view/png/hori/bg_empty.jpg);-moz-background-size:cover;background-repeat:repeat;" >
+		<div data-role="page" id="home" style="background:url(../assets/home/bg_empty.jpg);-moz-background-size:cover;background-repeat:repeat;" >
 			<!--
 			<div data-role="header">
 				<a data-icon="home" data-role="button" data-rel="back">返回</a>
