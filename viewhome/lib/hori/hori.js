@@ -834,11 +834,36 @@ var horiPub={
 				}
 		});
 		
+	},
+	invokeClientRequest:function(args){
+
+			var type=args.type;
+			var url=args.url;
+			var data=args.data;
+			var callback=args.success;
+
+		if($.isFunction(callback)){
+			
+			var requestDataOpration = new cherry.NativeOperation("application", "invokeAjax", [type,url,data]).dispatch();			
+			
+			var cherryScript = new cherry.ScriptOperation(function(){
+				var returnData="";
+				returnData=requestDataOpration.returnValue;				
+				callback.apply(this,[returnData]);
+					
+			})
+		
+			cherryScript.addDependency(requestDataOpration);		
+			cherryScript.dispatch();
+			cherry.flushOperations();
+
 	}
+	
+}
 }
 //rend hori
 //$(document).ready(function(){
-	$(window.document).trigger("horiInit",[opts]);
+	//$(window.document).trigger("horiInit",[opts]);
 	var hori=$.extend({},horiPub,opts);
 	jQuery.extend({hori:hori})
 	// $(window.document).trigger("horidone",[hori]);
