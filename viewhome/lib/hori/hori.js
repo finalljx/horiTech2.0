@@ -841,23 +841,34 @@
 								var url=args.url;
 								var data=args.data;
 								var callback=args.success;
-
-								if($.isFunction(callback)){
-
-									var requestDataOpration = new cherry.NativeOperation("application", "invokeAjax", [type,url,data]).dispatch();			
-
-									var cherryScript = new cherry.ScriptOperation(function(){
-										var returnData="";
-										returnData=requestDataOpration.returnValue;				
-										callback.apply(this,[returnData]);
-
+								if(opts.browerDebug){
+									$.ajax({
+										url:args.url,
+										data:args.data,
+										type:args.type,
+										success:function(returnData){
+											callback.apply(this,[returnData]);
+										}
 									})
+								}else{
+									if($.isFunction(callback)){
 
-									cherryScript.addDependency(requestDataOpration);		
-									cherryScript.dispatch();
-									cherry.flushOperations();
+										var requestDataOpration = new cherry.NativeOperation("application", "invokeAjax", [type,url,data]).dispatch();			
 
+										var cherryScript = new cherry.ScriptOperation(function(){
+											var returnData="";
+											returnData=requestDataOpration.returnValue;				
+											callback.apply(this,[returnData]);
+
+										})
+
+										cherryScript.addDependency(requestDataOpration);		
+										cherryScript.dispatch();
+										cherry.flushOperations();
+
+									}
 								}
+								
 
 							}
 	}
