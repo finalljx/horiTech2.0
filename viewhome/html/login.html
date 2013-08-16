@@ -135,7 +135,7 @@
 					var random = new Date().getTime();
 					url = url + "&data-random=" + random;
 				}catch(e){}
-				var data = 'Username='+username+'&Password='+password+'&$PublicAccess=1&ReasonType=0&data-userid=Username&data-password=Password&data-login=true';
+				var data = 'Username='+username+'&Password='+password;
 				
 				/*
 				$.ajax({
@@ -177,7 +177,7 @@
 				*/
 				$.hori.invokeClientRequest({
 						"type":"post",
-						"url":"http://115.28.33.62/view/oa/loginvalidate/names.nsf?Login",
+						"url":"http://localhost:8080/NewTopMobile/view/oa/loginvalidate/names.nsf?Login",
 						"data":data,
 						"success":function(res){
 								alert(res);
@@ -188,7 +188,7 @@
 									//本地存储itcode 和oaServerName
 									localStorage.setItem("oaServerName",$.hori.getconfig().oaServerName)
 									//localStorage.setItem("itcode",encrypt($.hori.getconfig().encryptKey,username));
-									var targetURL= "viewhome/html/home.html"
+									var targetURL= $.hori.getconfig().serverBaseUrl+"viewhome/html/home.html"
 									targetURL=encodeURI(targetURL);
 									var componentURL = "viewhome/xml/digihome.xml";
 									$.hori.loadPage(targetURL, componentURL);

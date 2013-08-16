@@ -93,11 +93,11 @@ icount= gcount;
 			"url":url,
 			"data":"data-xml=yes^~^app|8|vwTaskUnDoneForMobile|vwTaskUnDoneForMobile^~^msg|5|msgByDateDownUnRdView|msgByDateDownRdView^~^flowinfo|5|FlowUndoView|FlowDoneView",
 			"success":function(res){
+				var json = JSON.parse(res);
 
+				$("#spanTodo").html(json.number);
 
-			$("#spanTodo").html(res);
-
-			icount= gcount;
+				icount= gcount;
 			}
 			})
 }
